@@ -1,16 +1,17 @@
-import { useRef } from 'react';
-import chains from '@ngmi/chains';
-import { sign } from '@ngmi/message';
+import { FormEvent, useRef } from 'react';
+import * as chains from '@hypereon/chains';
+import { sign } from '@hypereon/message';
 import Link from 'next/link';
+import { Network, TestNetwork } from '@hypereon/chains/dist/types';
 
-export async function getServerSideProps(context) {
+export function getStaticProps() {
   const options = Object.keys(chains)
-    .map((chain) => {
-      const name = chains[chain].main.name;
+    .map((chain: any) => {
+      const name: string = (chains as any)[chain].main.name;
       return {
         label: name.match(/[A-Z][a-z]+/g)?.join(' ') ?? name,
-        value: chains[chain].main?.messagePrefix ?? null,
-        networks: chains[chain],
+        value: (chains as any)[chain].main?.messagePrefix ?? null,
+        networks: (chains as any)[chain],
       };
     })
     .filter((chain) => chain.networks.main.messagePrefix);
@@ -19,24 +20,23 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Sign(props) {
-  const blockchainRef = useRef(null);
-  const privateKeyWifRef = useRef(null);
-  const messageRef = useRef(null);
-  const signatureRef = useRef(null);
+export default function Sign(props: any) {
+  const blockchainRef = useRef<HTMLSelectElement>(null);
+  const privateKeyWifRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const signatureRef = useRef<HTMLTextAreaElement>(null);
   
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log('blockchainRef', blockchainRef)
     const signature = sign({
-      privateKey: privateKeyWifRef.current.value,
-      message: messageRef.current.value,
-      messagePrefix: blockchainRef.current.value,
+      privateKey: privateKeyWifRef.current?.value ?? '',
+      message: messageRef.current?.value ?? '',
+      messagePrefix: blockchainRef.current?.value ?? '',
     });
-    if (signature) {
+    if (signature && signatureRef.current) {
       signatureRef.current.value = signature;
       signatureRef.current.disabled = false;
-    } else {
+    } else if (signatureRef.current) {
       signatureRef.current.value = 'Invalid private key...';
       signatureRef.current.disabled = true;
     }
@@ -74,7 +74,7 @@ export default function Sign(props) {
           name="blockchain"
           required
         >
-          {props.options.map((chain) => (
+          {props.options.map((chain: any) => (
             <option key={chain.label} value={chain.value}>
               {chain.label}
             </option>
@@ -96,16 +96,15 @@ export default function Sign(props) {
           id="sign-message"
           name="message"
           placeholder="Message"
-          rows="2"
+          rows={2}
           required
         ></textarea>
         <label htmlFor="sign-signature">Signature</label>
         <textarea
           ref={signatureRef}
           id="sign-signature"
-          type="text"
           name="signature"
-          rows="2"
+          rows={2}
           disabled
         ></textarea>
         <button type="submit" className="button">

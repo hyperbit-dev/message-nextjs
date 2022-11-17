@@ -1,16 +1,16 @@
-import { useRef, useState } from 'react';
-import chains from '@ngmi/chains';
-import { verify } from '@ngmi/message';
+import { FormEvent, useRef, useState } from 'react';
+import * as chains from '@hypereon/chains';
+import { verify } from '@hypereon/message';
 import Link from 'next/link';
 
-export async function getServerSideProps(context) {
+export function getStaticProps() {
   const options = Object.keys(chains)
     .map((chain) => {
-      const name = chains[chain].main.name;
+      const name = (chains as any)[chain].main.name;
       return {
         label: name.match(/[A-Z][a-z]+/g)?.join(' ') ?? name,
-        value: chains[chain].main?.messagePrefix ?? null,
-        networks: chains[chain],
+        value: (chains as any)[chain].main?.messagePrefix ?? null,
+        networks: (chains as any)[chain],
       };
     })
     .filter((chain) => chain.networks.main.messagePrefix);
@@ -19,21 +19,21 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Verify(props) {
-  const [isVerified, setIsVerified] = useState(null);
-  const blockchainRef = useRef(null);
-  const addressRef = useRef(null);
-  const messageRef = useRef(null);
-  const signatureRef = useRef(null);
+export default function Verify(props: any) {
+  const [isVerified, setIsVerified] = useState<boolean | null>(null);
+  const blockchainRef = useRef<HTMLSelectElement>(null);
+  const addressRef = useRef<HTMLInputElement>(null);
+  const messageRef = useRef<HTMLTextAreaElement>(null);
+  const signatureRef = useRef<HTMLTextAreaElement>(null);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsVerified(null);
     const isVerified = verify({
-      address: addressRef.current.value,
-      message: messageRef.current.value,
-      messagePrefix: blockchainRef.current.value,
-      signature: signatureRef.current.value,
+      address: addressRef.current?.value ?? '',
+      message: messageRef.current?.value ?? '',
+      messagePrefix: blockchainRef.current?.value ?? '',
+      signature: signatureRef.current?.value ?? '',
     });
     setIsVerified(isVerified);
   }
@@ -75,7 +75,7 @@ export default function Verify(props) {
           name="blockchain"
           required
         >
-          {props.options.map((chain) => (
+          {props.options.map((chain: any) => (
             <option key={chain.label} value={chain.value}>
               {chain.label}
             </option>
@@ -96,16 +96,15 @@ export default function Verify(props) {
           id="sign-message"
           name="message"
           placeholder="Message"
-          rows="2"
+          rows={2}
           required
         ></textarea>
         <label htmlFor="sign-signature">Signature</label>
         <textarea
           ref={signatureRef}
           id="sign-signature"
-          type="text"
           name="signature"
-          rows="2"
+          rows={2}
           required
         ></textarea>
         <div
