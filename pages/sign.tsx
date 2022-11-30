@@ -1,5 +1,5 @@
 import { FormEvent, useRef } from 'react';
-import * as chains from '@hypereon/chains';
+import { chains } from '@hypereon/chains';
 import { sign } from '@hypereon/message';
 import Link from 'next/link';
 import { Network, TestNetwork } from '@hypereon/chains/dist/types';

@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hypereon/chains": "^0.0.4",
+    "@hypereon/chains": "^0.0.5",
     "@hypereon/message": "^0.0.1",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
