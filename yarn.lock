@@ -51,10 +51,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@hypereon/chains@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@hypereon/chains/-/chains-0.0.4.tgz#894aac7d58d50952a0a77741264eae2349715e27"
-  integrity sha512-nuabJZe0vyXO+CijjFJByJvf1NEEJ57wlYGWq80x2nQk3Y4/C87hgoXlMgaNeg/YuGbPs+Mp+CVl5et6J0q8Hg==
+"@hypereon/chains@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@hypereon/chains/-/chains-0.0.5.tgz#eb33f76668426e44e072bf362edeacd64788f442"
+  integrity sha512-p7QAa/dqqksWPouEv2cPbvDJ1lZtpI71ACx7pJk273xxfrFCC9JClRqVU8w5GpQhGMvXBNI5aJK1WjyR20NyFA==
 
 "@hypereon/message@^0.0.1":
   version "0.0.1"
