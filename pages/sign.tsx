@@ -1,8 +1,8 @@
 import { FormEvent, useRef } from 'react';
-import { chains } from '@hypereon/chains';
-import { sign } from '@hypereon/message';
+import { chains } from '@hyperbitjs/chains';
+import { sign } from '@hyperbitjs/message';
 import Link from 'next/link';
-import { Network, TestNetwork } from '@hypereon/chains/dist/types';
+import { Network, TestNetwork } from '@hyperbitjs/chains/dist/types';
 
 export function getStaticProps() {
   const options = Object.keys(chains)

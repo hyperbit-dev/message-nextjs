@@ -1,6 +1,6 @@
 import { FormEvent, useRef, useState } from 'react';
-import { chains } from '@hypereon/chains';
-import { verify } from '@hypereon/message';
+import { chains } from '@hyperbitjs/chains';
+import { verify } from '@hyperbitjs/message';
 import Link from 'next/link';
 
 export function getStaticProps() {
