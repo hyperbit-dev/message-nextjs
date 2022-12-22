@@ -51,15 +51,15 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@hypereon/chains@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@hypereon/chains/-/chains-0.0.5.tgz#eb33f76668426e44e072bf362edeacd64788f442"
-  integrity sha512-p7QAa/dqqksWPouEv2cPbvDJ1lZtpI71ACx7pJk273xxfrFCC9JClRqVU8w5GpQhGMvXBNI5aJK1WjyR20NyFA==
+"@hyperbitjs/chains@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@hyperbitjs/chains/-/chains-0.2.0.tgz#f96ed5ae2493ceb169698ef04cc407973a17a24c"
+  integrity sha512-E9z19XMDLx1yAH6yjijt0q7EeUY6fqlQ8n+HNJ/V2+Rlptbx1S8/tkCa3zMgYLDhymnajdHXe/0tKkQqnRRI5A==
 
-"@hypereon/message@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@hypereon/message/-/message-0.0.1.tgz#13b489aeba7fa81555e699fcb4a7e10f8e741e08"
-  integrity sha512-Y90Z6+vYRkBaKwnTXJdK1lRCirPBTTT9pRSxrLD1qibHuYLQaOXVcSGm3WHdryu5K38CFfapt8SeWfRFo+8E9A==
+"@hyperbitjs/message@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@hyperbitjs/message/-/message-0.1.0.tgz#e1f34db324cec65a597edb3f831d8e79a381e20b"
+  integrity sha512-BoahgNdnNMvc+iITVWHQhmmnXYvo2GhSGKMSkOeQn+J6CpqIc1Y+IoUSE/oSF0+ofy5HH0wd8Sdo5RZVMbc3bg==
   dependencies:
     bitcoinjs-message "^2.2.0"
     coinkey "^3.0.0"

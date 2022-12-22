@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hypereon/chains": "^0.0.5",
-    "@hypereon/message": "^0.0.1",
+    "@hyperbitjs/chains": "^0.2.0",
+    "@hyperbitjs/message": "^0.1.0",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
