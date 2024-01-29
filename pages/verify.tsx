@@ -6,14 +6,14 @@ import Link from 'next/link';
 export function getStaticProps() {
   const options = Object.keys(chains)
     .map((chain) => {
-      const name = (chains as any)[chain].main.name;
+      const name = (chains as any)[chain].mainnet.name;
       return {
         label: name.match(/[A-Z][a-z]+/g)?.join(' ') ?? name,
-        value: (chains as any)[chain].main?.messagePrefix ?? null,
+        value: (chains as any)[chain].mainnet?.messagePrefix ?? null,
         networks: (chains as any)[chain],
       };
     })
-    .filter((chain) => chain.networks.main.messagePrefix);
+    .filter((chain) => chain.networks.mainnet.messagePrefix);
   return {
     props: { options },
   };
