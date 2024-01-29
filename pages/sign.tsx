@@ -2,19 +2,18 @@ import { FormEvent, useRef } from 'react';
 import { chains } from '@hyperbitjs/chains';
 import { sign } from '@hyperbitjs/message';
 import Link from 'next/link';
-import { Network, TestNetwork } from '@hyperbitjs/chains/dist/types';
 
 export function getStaticProps() {
   const options = Object.keys(chains)
     .map((chain: any) => {
-      const name: string = (chains as any)[chain].main.name;
+      const name: string = (chains as any)[chain].mainnet.name;
       return {
         label: name.match(/[A-Z][a-z]+/g)?.join(' ') ?? name,
-        value: (chains as any)[chain].main?.messagePrefix ?? null,
+        value: (chains as any)[chain].mainnet?.messagePrefix ?? null,
         networks: (chains as any)[chain],
       };
     })
-    .filter((chain) => chain.networks.main.messagePrefix);
+    .filter((chain) => chain.networks.mainnet.messagePrefix);
   return {
     props: { options },
   };
